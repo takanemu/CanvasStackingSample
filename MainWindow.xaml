@@ -6,16 +6,16 @@
         xmlns:local="clr-namespace:CanvasStackingSample"
         mc:Ignorable="d" Loaded="Window_Loaded"
         Title="MainWindow" Height="450" Width="800" ResizeMode="NoResize">
-    <Grid>
-        <Button Content="ボタン１" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="25,25,0,0" Height="75"/>
-        <Button Content="ボタン２" HorizontalAlignment="Right" VerticalAlignment="Top" Width="75" Margin="0,25,25,0" Height="75"/>
-        <Button Content="ボタン３" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="75" Margin="25,0,0,25" Height="75"/>
-        <Button Content="ボタン４" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="75" Margin="0,0,25,25" Height="75"/>
+    <Grid x:Name="grid">
+        <Button x:Name="button1" Content="ボタン１" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="25,25,0,0" Height="75"/>
+        <Button x:Name="button2" Content="ボタン２" HorizontalAlignment="Right" VerticalAlignment="Top" Width="75" Margin="0,25,25,0" Height="75"/>
+        <Button x:Name="button3" Content="ボタン３" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="75" Margin="25,0,0,25" Height="75"/>
+        <Button x:Name="button4" Content="ボタン４" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="75" Margin="0,0,25,25" Height="75"/>
         <Canvas x:Name="canvas" Background="Transparent">
-            <Ellipse x:Name="help1" Fill="#FFFB01C2" Height="100" Canvas.Left="66" Stroke="Red" Canvas.Top="66" Width="100" HorizontalAlignment="Left" VerticalAlignment="Top" Visibility="Collapsed"/>
-            <Ellipse x:Name="help2" Fill="#FFFB01C2" Height="100" Stroke="Red" Width="100" HorizontalAlignment="Right" VerticalAlignment="Top" Canvas.Left="619" Canvas.Top="66" Visibility="Collapsed"/>
-            <Ellipse x:Name="help3" Fill="#FFFB01C2" Height="100" Canvas.Left="66" Stroke="Red" Width="100" HorizontalAlignment="Left" VerticalAlignment="Bottom" Canvas.Top="259" Visibility="Collapsed"/>
-            <Ellipse x:Name="help4" Fill="#FFFB01C2" Height="100" Canvas.Left="619" Stroke="Red" Width="100" HorizontalAlignment="Right" VerticalAlignment="Bottom" Canvas.Top="259" Visibility="Collapsed"/>
+            <Ellipse x:Name="help1" Fill="#FFFB01C2" Height="100" Stroke="Red" Width="100" HorizontalAlignment="Left" VerticalAlignment="Top" Visibility="Collapsed"/>
+            <Ellipse x:Name="help2" Fill="#FFFB01C2" Height="100" Stroke="Red" Width="100" HorizontalAlignment="Right" VerticalAlignment="Top" Visibility="Collapsed"/>
+            <Ellipse x:Name="help3" Fill="#FFFB01C2" Height="100" Stroke="Red" Width="100" HorizontalAlignment="Left" VerticalAlignment="Bottom" Visibility="Collapsed"/>
+            <Ellipse x:Name="help4" Fill="#FFFB01C2" Height="100" Stroke="Red" Width="100" HorizontalAlignment="Right" VerticalAlignment="Bottom" Visibility="Collapsed"/>
         </Canvas>
         <CheckBox Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked" Content="透過" IsChecked="False" HorizontalAlignment="Center" VerticalAlignment="Center"/>
     </Grid>

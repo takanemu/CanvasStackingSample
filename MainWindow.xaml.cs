@@ -31,7 +31,18 @@ namespace CanvasStackingSample
             var index = 0;
             var component = new UIElement[] { this.help1, this.help2, this.help3, this.help4 };
             var dispatcherTimer = new DispatcherTimer(DispatcherPriority.Normal);
-
+            var origin = this.grid.PointToScreen(new Point(0.0d, 0.0d));
+            var pt = new Point[] {
+                this.button1.PointToScreen(new Point(0.0d, 0.0d)),
+                this.button2.PointToScreen(new Point(0.0d, 0.0d)),
+                this.button3.PointToScreen(new Point(0.0d, 0.0d)),
+                this.button4.PointToScreen(new Point(0.0d, 0.0d)),
+            };
+            for(var i = 0; i < component.Length; i++)
+            {
+                Canvas.SetLeft(component[i], pt[i].X - origin.X);
+                Canvas.SetTop(component[i], pt[i].Y - origin.Y);
+            }
             dispatcherTimer.Interval = new TimeSpan(0, 0, 0, 1);
             dispatcherTimer.Tick += new EventHandler((s, ea) => {
                 foreach(var element in component)

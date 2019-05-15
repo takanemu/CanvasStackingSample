@@ -28,31 +28,26 @@ namespace CanvasStackingSample
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            var index = 0;
-            var component = new UIElement[] { this.help1, this.help2, this.help3, this.help4 };
-            var dispatcherTimer = new DispatcherTimer(DispatcherPriority.Normal);
+            var buttons = new FrameworkElement[] { this.button1, this.button2, this.button3, this.button4 };
             var origin = this.grid.PointToScreen(new Point(0.0d, 0.0d));
-            var pt = new Point[] {
-                this.button1.PointToScreen(new Point(0.0d, 0.0d)),
-                this.button2.PointToScreen(new Point(0.0d, 0.0d)),
-                this.button3.PointToScreen(new Point(0.0d, 0.0d)),
-                this.button4.PointToScreen(new Point(0.0d, 0.0d)),
-            };
-            for(var i = 0; i < component.Length; i++)
+
+            foreach (var component in buttons)
             {
-                Canvas.SetLeft(component[i], pt[i].X - origin.X);
-                Canvas.SetTop(component[i], pt[i].Y - origin.Y);
+                var border = new Border();
+                var pt = component.PointToScreen(new Point(0.0d, 0.0d));
+                var margin = 10;
+
+                border.Width = component.Width + (margin * 2);
+                border.Height = component.Height + (margin * 2);
+                border.BorderBrush = new SolidColorBrush(Colors.Red);
+                border.BorderThickness = new Thickness(3);
+                border.CornerRadius = new CornerRadius(10);
+
+                Canvas.SetLeft(border, pt.X - origin.X - margin);
+                Canvas.SetTop(border, pt.Y - origin.Y - margin);
+
+                this.canvas.Children.Add(border);
             }
-            dispatcherTimer.Interval = new TimeSpan(0, 0, 0, 1);
-            dispatcherTimer.Tick += new EventHandler((s, ea) => {
-                foreach(var element in component)
-                {
-                    element.Visibility = Visibility.Collapsed;
-                }
-                component[index++].Visibility = Visibility.Visible;
-                index = index >= 4 ? 0 : index;
-            });
-            dispatcherTimer.Start();
         }
 
         private void CheckBox_Checked(object sender, RoutedEventArgs e)
